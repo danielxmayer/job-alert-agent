@@ -37,7 +37,10 @@ log = logging.getLogger(__name__)
 #  Helpers
 # ──────────────────────────────────────────────────────
 def job_id(title: str, company: str, portal: str) -> str:
-    """Stable MD5 identifier for deduplication."""
+    """
+    Stable collision-resistant identifier for job deduplication.
+    MD5 is intentionally used here for its speed; this is NOT a cryptographic operation.
+    """
     key = f"{title.lower().strip()}{company.lower().strip()}{portal}"
     return hashlib.md5(key.encode()).hexdigest()
 

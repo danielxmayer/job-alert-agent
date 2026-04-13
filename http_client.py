@@ -117,5 +117,3 @@ async def fetch_page_async(
                 portal, attempt, exc, delay,
             )
             await asyncio.sleep(delay)
-
-    return None  # unreachable, but keeps type checker happy

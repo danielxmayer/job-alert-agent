@@ -7,6 +7,7 @@ and logs which chain succeeded for observability.
 import logging
 
 from bs4 import BeautifulSoup, Tag
+from collections.abc import Callable
 
 from config import CONFIG
 
@@ -281,7 +282,7 @@ def parse_generic(soup: BeautifulSoup, portal: str, url: str) -> list[dict]:
 # ──────────────────────────────────────────────────────
 #  Parser registry
 # ──────────────────────────────────────────────────────
-PARSERS: dict[str, callable] = {
+PARSERS: dict[str, Callable] = {
     "parse_jobs_cz":    parse_jobs_cz,
     "parse_prace_cz":   parse_prace_cz,
     "parse_kariera_cz": parse_kariera_cz,
