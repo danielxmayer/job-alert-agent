@@ -447,17 +447,6 @@ if __name__ == "__main__":
     log.info(f"Min. skóre: {CONFIG['min_score']}/10 | Model: claude-haiku-4-5")
     log.info("=" * 55)
     run_check()
-Pak zruš běžící workflow a spusť znovu.
-
-jak Otevři agent.py na GitHubu
-
-
-Jdi na github.com/danielxmayer/job-alert-agent
-Klikni na soubor agent.py
-Klikni na tužku (ikona editace) vpravo nahoře
-Najdi konec souboru (Ctrl+End)
-Nahraď poslední blok kódu
-Klikni "Commit changes"
 
 
 
