@@ -451,7 +451,7 @@ Pak zruš běžící workflow a spusť znovu.
 
 jak Otevři agent.py na GitHubu
 
-16:05
+
 Jdi na github.com/danielxmayer/job-alert-agent
 Klikni na soubor agent.py
 Klikni na tužku (ikona editace) vpravo nahoře
