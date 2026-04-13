@@ -441,24 +441,23 @@ def run_check():
     save_seen(seen)
     log.info("Hotovo.")
 
-def cet_to_utc(t):
-    h, m = map(int, t.split(":"))
-    now = datetime.now(timezone.utc)
-    mo = now.month
-    cest = 3 < mo < 10 or (mo==3 and now.day>=25) or (mo==10 and now.day<25)
-    return f"{(h - (2 if cest else 1)) % 24:02d}:{m:02d}"
-
 if __name__ == "__main__":
-    cet = CONFIG["schedule_time_cet"]
-    utc = cet_to_utc(cet)
     log.info("=" * 55)
-    log.info(f"Job Alert Agent spuštěn")
-    log.info(f"Denní kontrola: {cet} CET = {utc} UTC")
+    log.info("Job Alert Agent spuštěn")
     log.info(f"Min. skóre: {CONFIG['min_score']}/10 | Model: claude-haiku-4-5")
     log.info("=" * 55)
-    schedule.every().day.at(utc).do(run_check)
-    log.info(f"Čekám na {cet} CET... (Ctrl+C pro ukončení)")
-    run_check()  # TEST – spustí kontrolu ihned
-    while True:
-        schedule.run_pending()
-        time.sleep(30)
+    run_check()
+Pak zruš běžící workflow a spusť znovu.
+
+jak Otevři agent.py na GitHubu
+
+16:05
+Jdi na github.com/danielxmayer/job-alert-agent
+Klikni na soubor agent.py
+Klikni na tužku (ikona editace) vpravo nahoře
+Najdi konec souboru (Ctrl+End)
+Nahraď poslední blok kódu
+Klikni "Commit changes"
+
+
+
