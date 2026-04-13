@@ -1,0 +1,31 @@
+name: Job Alert
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # 10:00 CET (UTC+2 letní čas)
+  workflow_dispatch:      # možnost spustit ručně
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Run agent
+        env:
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+          WHATSAPP_TOKEN: ${{ secrets.WHATSAPP_TOKEN }}
+          WHATSAPP_PHONE_ID: ${{ secrets.WHATSAPP_PHONE_ID }}
+          WHATSAPP_RECIPIENT: ${{ secrets.WHATSAPP_RECIPIENT }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python agent.py
